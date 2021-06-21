@@ -1,6 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+interface headerButtonProps {
+  available: boolean;
+}
+
+export const Container = styled.div<headerButtonProps>`
   background: #f0f0f5;
   border-radius: 8px;
 
@@ -12,11 +16,12 @@ export const Container = styled.div`
     transition: 0.3s opacity;
     text-align: center;
 
-    ${props =>
-    !props.available &&
-    css`
-        opacity: 0.3;
-      `};
+    ${(props) =>
+      !props.available
+        ? css`
+            opacity: 0.3;
+          `
+        : "transparent"};
 
     img {
       pointer-events: none;
@@ -114,7 +119,7 @@ export const Container = styled.div`
 
           &:before {
             position: absolute;
-            content: '';
+            content: "";
             height: 20px;
             width: 40px;
             left: 8px;
